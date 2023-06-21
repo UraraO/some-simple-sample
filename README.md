@@ -1,7 +1,8 @@
 # some-simple-sample
-some simple code snippet, only for reference
+some simple code sample, only for reference
+this repo will cotinuously update, if there's any sample of interest to you, just copy it and read~
 
-学习编程过程中写的一些值得记录的代码片段  
+学习编程过程中写的一些值得记录的代码片段，会保持更新，只要有任何新的代码示例，都会添加到这个仓库
 main.cpp中不保存任何代码，已有的代码片段保存在backup文件夹中
 可以拷贝仓库之后参考backup/CMakeLists.txt中的示例，添加add_executable，即可运行单个cpp文件
 其中部分文件使用到linux的库文件，推荐使用gcc编译，windows下使用MinGW  
