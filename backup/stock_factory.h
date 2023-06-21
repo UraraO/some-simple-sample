@@ -34,7 +34,7 @@ public:
 		pstock = wk_stock.lock();
 		if(!pstock) {
 			pstock.reset(new stock(key),
-			             std::bind(stock_factory::weak_delete_callback, weak_ptr<stock_factory> (shared_from_this()), std::placeholders::_1));
+			             [capture0 = weak_ptr<stock_factory> (shared_from_this())](auto && PH1) { return stock_factory::weak_delete_callback(capture0, std::forward<decltype(PH1)>(PH1)); });
 			wk_stock = pstock;
 		}
 		return pstock;
