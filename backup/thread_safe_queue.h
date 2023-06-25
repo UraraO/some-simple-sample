@@ -2,7 +2,7 @@
 #include <memory>
 #include <mutex>
 #include <condition_variable>
-#include <stdio.h>
+#include <cstdio>
 #include <thread>
 
 
@@ -10,6 +10,7 @@
 using std::queue;
 using std::mutex;
 using std::condition_variable;
+
 
 template <typename T>
 class thread_safe_queue {

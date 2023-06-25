@@ -59,18 +59,3 @@ private:
 	mutable mutex_lock m_mutex;
 	map<string, weak_ptr<stock>> m_stocks;
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

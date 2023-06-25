@@ -58,11 +58,3 @@ int main(int argc, char **argv) {
 	cout << current_time(format) << endl;
 
 }
-
-
-
-
-
-
-
-

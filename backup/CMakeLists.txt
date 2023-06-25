@@ -7,6 +7,7 @@ set(SRC_FILE_BACKUP
 	union_find.cpp
 	prim.cpp
 	virtual_table_exp.cpp
+	thread_safe_queue.h
 	thread_safe_queue.cpp
 	shared_ptr.cpp
 	my_thread_test.cpp

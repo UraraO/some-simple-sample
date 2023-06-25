@@ -158,13 +158,3 @@ int main() {
 	print_vec(vec);
 	return 0;
 }
-
-
-
-
-
-
-
-
-
-

@@ -2,9 +2,10 @@
 
 #include "thread_safe_queue.h"
 
+using std::shared_ptr;
+using std::thread;
 
-
-void generate(std::shared_ptr<thread_safe_queue<int>> que) {
+void generate(const shared_ptr<thread_safe_queue<int>> que) {
 	int i = 0;
 	while(i < 1000) {
 		que->push(i);
@@ -13,8 +14,8 @@ void generate(std::shared_ptr<thread_safe_queue<int>> que) {
 	}
 }
 
-void consume(std::shared_ptr<thread_safe_queue<int>> que) {
-	while(1) {
+void consume(const shared_ptr<thread_safe_queue<int>> que) {
+	while(true) {
 		auto sp = que->wait_and_pop();
 		printf("Consumer: pop %d\n", *sp);
 		if(*sp == 999) break;
@@ -26,21 +27,13 @@ void consume(std::shared_ptr<thread_safe_queue<int>> que) {
 int main(int argc, char **argv) {
 
 
-	std::shared_ptr<thread_safe_queue<int>> sp(std::make_shared<thread_safe_queue<int>>());
+	shared_ptr<thread_safe_queue<int>> sp(std::make_shared<thread_safe_queue<int>>());
 
-	std::thread consumer(consume, sp);
-	std::thread generator(generate, sp);
+	thread consumer(consume, sp);
+	thread generator(generate, sp);
 
 	generator.join();
 	consumer.join();
 
 	return 0;
 }
-
-
-
-
-
-
-
-

@@ -41,12 +41,3 @@ private:
 	T *_pt;
 	size_t *_count;
 };
-
-
-
-
-
-
-
-
-

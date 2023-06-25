@@ -92,18 +92,3 @@ private:
 	mutex_lock &m_mutex;
 	pthread_cond_t m_pcond;
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
