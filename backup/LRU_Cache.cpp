@@ -6,14 +6,6 @@
 #include <list>
 #include <chrono>
 
-
-
-
-using std::cin;
-using std::cout;
-using std::endl;
-using std::vector;
-
 using namespace std;
 
 
@@ -242,16 +234,6 @@ private:
 	unordered_map<K, list<node>::iterator> m_umap;
 	int cap;
 };
-
-
-int main(int argc, char **argv) {
-
-	
-
-
-
-	return 0;
-}
 
 
 // #pragma clang diagnostic pop
