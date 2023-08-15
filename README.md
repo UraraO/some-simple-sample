@@ -20,3 +20,4 @@ main.cpp中不保存任何代码，已有的代码片段保存在backup文件夹
 - thread_safe_queue   一个简单的线程安全的队列实现，可以配合spawn_task成为线程安全的任务队列
 - union_find    查找一幅图中连通分量个数的算法
 - **virtual_table_exp**   虚函数表实验，探究C++虚函数机制的内存结构，backup中附有此实验的结果图和解析图，便于配合理解
+- LRU_Cache    LRU缓存，其中包含简单的版本和带有过期时间的版本
