@@ -2,8 +2,7 @@
 
 #include <iostream>
 #include <vector>
-
-
+#include <functional>
 
 
 using std::cin;
@@ -17,7 +16,7 @@ using namespace std;
 
 int main(int argc, char **argv) {
 
-
+	cout << "Hello Clion!\n" << endl;
 
 
 

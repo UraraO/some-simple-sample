@@ -1,3 +1,7 @@
+/*
+ * Prim最小生成树算法
+ * */
+
 #pragma once
 
 #include <vector>
