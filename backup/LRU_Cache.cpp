@@ -9,7 +9,7 @@
 using namespace std;
 
 
-// Ê¹ÓÃ×Ô¼ºÉè¼ÆµÄÁ´±íÊµÏÖ£¬ÆÕÍ¨LRU
+// ä½¿ç”¨è‡ªå·±è®¾è®¡çš„é“¾è¡¨å®ç°ï¼Œæ™®é€šLRU
 class LRUCache {
 public:
 	LRUCache(int capacity) : cap(capacity), m_umap(), m_list() {}
@@ -101,12 +101,17 @@ private:
 	int cap;
 };
 
-
+// ä½¿ç”¨æ ‡å‡†åº“listå®ç°
 class LRUCache_std {
 public:
-	LRUCache_std(int capacity) : cap(capacity), m_umap(), m_list() {}
+	LRUCache_std(int capacity) : cap(capacity), m_umap(), m_list() {
+		if(cap <= 0) {
+			cout << "capacity is below 0! cap has been set as 100." << endl;
+			cap = 100;
+		}
+	}
 
-	// ²åÈëº¯ÊıÖ÷ÒªÊµÏÖ
+	// æ’å…¥å‡½æ•°ä¸»è¦å®ç°
 	void m_push(int key, int node) {
 		m_list.push_front({ key, node });
 		m_umap[key] = m_list.begin();
@@ -115,13 +120,13 @@ public:
 		}
 	}
 
-	// É¾³ıº¯ÊıÖ÷ÒªÊµÏÖ
+	// åˆ é™¤å‡½æ•°ä¸»è¦å®ç°
 	void m_delete() {
 		m_umap.erase(m_list.back().first);
 		m_list.pop_back();
 	}
 
-	// µ÷Õû»º´æ£¬½«±»ĞŞ¸ÄµÄ»º´æÏîÌáµ½Á´±íÊ×²¿
+	// è°ƒæ•´ç¼“å­˜ï¼Œå°†è¢«ä¿®æ”¹çš„ç¼“å­˜é¡¹æåˆ°é“¾è¡¨é¦–éƒ¨
 	void m_change(list<pair<int, int>>::iterator iter) {
 		auto node = *iter;
 		m_list.erase(iter);
@@ -148,12 +153,13 @@ public:
 	}
 
 private:
+	// <key, node>
 	list<pair<int, int>> m_list;
 	unordered_map<int, list<pair<int, int>>::iterator> m_umap;
 	int cap;
 };
 
-
+// å¸¦æœ‰è¿‡æœŸæ—¶é—´çš„å®ç°
 // template<typename K = int, typename V = int>
 class LRUCache_withTTL {
 public:
@@ -161,7 +167,12 @@ public:
 	using point_type = chrono::system_clock::time_point;
 	using K = int;
 	using V = int;
-	LRUCache_withTTL(int capacity) : cap(capacity), m_umap(), m_list() {}
+	LRUCache_withTTL(int capacity) : cap(capacity), m_umap(), m_list() {
+		if(cap <= 0) {
+			cout << "capacity is below 0! cap has been set as 100." << endl;
+			cap = 100;
+		}
+	}
 	class node {
 	public:
 		node(K k, V v, dure_type dur = 60s) : key(k), val(v), expire_point(chrono::system_clock::now() + dur) {}
@@ -178,16 +189,16 @@ public:
 		point_type expire_point;
 	};
 
-	// ²åÈëº¯ÊıÖ÷ÒªÊµÏÖ
+	// æ’å…¥å‡½æ•°ä¸»è¦å®ç°
 	void m_push(int key, int val, dure_type dur = 60s) {
-		m_list.push_front(node(key, val, dur));
+		m_list.emplace_front(key, val, dur);
 		m_umap[key] = m_list.begin();
 		if (m_list.size() > cap) {
 			m_delete();
 		}
 	}
 
-	// É¾³ıº¯ÊıÖ÷ÒªÊµÏÖ
+	// åˆ é™¤å‡½æ•°ä¸»è¦å®ç°
 	void m_delete() {
 		m_umap.erase(m_list.back().key);
 		m_list.pop_back();
@@ -198,7 +209,7 @@ public:
 		m_list.erase(iter);
 	}
 
-	// µ÷Õû»º´æ£¬½«±»ĞŞ¸ÄµÄ»º´æÏîÌáµ½Á´±íÊ×²¿
+	// è°ƒæ•´ç¼“å­˜ï¼Œå°†è¢«ä¿®æ”¹çš„ç¼“å­˜é¡¹æåˆ°é“¾è¡¨é¦–éƒ¨
 	void m_change(list<node>::iterator iter) {
 		auto node = *iter;
 		m_list.erase(iter);

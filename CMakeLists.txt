@@ -11,5 +11,6 @@ set(SRC_FILE
 add_executable(main ${SRC_FILE})
 
 add_subdirectory(backup)
+add_subdirectory(Cpp_samples)
 
 

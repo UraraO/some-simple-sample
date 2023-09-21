@@ -21,7 +21,9 @@ public:
 	virtual void virtualMethod3() {
 		std::cout << "BaseClass::virtualMethod3()" << std::endl;
 	}
-
+	/*~MyBaseClass() {
+		std::cout << "BaseClass::~BaseClass()" << std::endl;
+	}*/
 };
 
 class MyDerivedClass : public MyBaseClass {
@@ -35,6 +37,9 @@ public:
 	virtual void virtualMethod5() {
 		std::cout << "DerivedClass::virtualMethod5()" << std::endl;
 	}
+	/*~MyDerivedClass() {
+		std::cout << "DerivedClass::~DerivedClass()" << std::endl;
+	}*/
 };
 
 void PrintVtable(void** vtable) {

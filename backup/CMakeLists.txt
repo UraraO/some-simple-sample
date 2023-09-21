@@ -14,14 +14,16 @@ set(SRC_FILE_BACKUP
 	chrono_test.cpp
 	spawn_task.cpp
 	LRU_Cache.cpp
-
+	heap.cpp
+	HNtest.cpp
 
 )
 
-add_custom_target(test_target1 SOURCES ${SRC_FILE_BACKUP})
+add_custom_target(backup_target SOURCES ${SRC_FILE_BACKUP})
 
 #add_executable(thread_test my_thread_test.cpp)
 #add_executable(queue thread_safe_queue.cpp)
 #add_executable(virtual virtual_table_exp.cpp)
+add_executable(sort algo_sort.cpp)
 #add_library(test_target1 ${SRC_FILE_BACKUP})
 #add_executable(spawn_task spawn_task.cpp)
